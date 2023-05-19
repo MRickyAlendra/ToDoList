@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TodoItem = ({ todo, toggleCompleted }) => {
+const TodoItem = ({ todo, toggleCompleted, deleteTodo }) => {
     const getTodoTitleStyle = () => {
     if (todo.completed === true) {
         return { textDecoration: 'line-through'}
@@ -15,6 +15,8 @@ const TodoItem = ({ todo, toggleCompleted }) => {
             onChange={() => toggleCompleted(todo.id)}
             />
             <p style={getTodoTitleStyle()}>{todo.title}</p>
+            <button style={style.button}
+            onClick={() => deleteTodo(todo.id)}>x</button>
         </div>
   )
 }
@@ -24,13 +26,23 @@ const style = {
         border: '2px solid #f4f4f4',
         fontSize: '24px',
         display: 'flex',
-        jutifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
+        padding: '0 20px',
     },
     checkbox: {
-        marginRight: '10px',
         height: '18px',
         width: '18px',
+    },
+    button: {
+        backgroundColor: '#BB0000',
+        color: 'fff',
+        height: '30px',
+        widht: '30px',
+        borderRadius: '100%',
+        border: 'none',
+        cursor: 'pointer',
+        fontSize: '16px',
     },
 }
 
